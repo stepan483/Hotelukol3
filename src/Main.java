@@ -126,7 +126,7 @@ public class Main {
 
 
         for (Booking booking : bookingList){
-            System.out.println( booking.getGuest() + "" +  booking.getprice());             // nevim proč ale piše to nulu a né cenu
+            System.out.println( booking.getGuest() + "" +  booking.getprice());
 
         }
         System.out.println("\n" + bookingManager.getNumberOfWorkingBooking());
