@@ -129,7 +129,7 @@ public class Main {
             System.out.println( booking.getGuest() + "" +  booking.getprice());
 
         }
-        System.out.println("\n" + bookingManager.getNumberOfWorkingBooking());  //awddd
+        System.out.println("\n" + bookingManager.getNumberOfWorkingBooking());  //awdddadwa
 
     }
 }
