@@ -111,7 +111,7 @@ public class Main  {
 
 
 
-        //    vypisRezervací(); //vyhazuje chybu
+        //    vypisRezervací(); //vyhazuje chybu.
         //    rekreačníReservaceVýpis();
         //    printGuestStatistics();
 
