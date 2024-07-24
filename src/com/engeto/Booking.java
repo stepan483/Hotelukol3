@@ -4,12 +4,11 @@ package com.engeto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class Booking {
-    private List<Booking> bookingList = new ArrayList<>();
+
 
     private int position;
     private Room room;
@@ -19,17 +18,6 @@ public class Booking {
     private int numberOfGuests;
     private boolean typeOfWorkingVacation;
 
-
-
-
-
-
-    public Booking( Guest name, Room room, LocalDate checkIn,LocalDate checkOut ) {
-        this.room = room;
-        this.name = name;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-    }
 
     public Booking( Guest name, Room room, LocalDate checkIn,LocalDate checkOut, int numberOfGuests, boolean typeOfWorkingVacation) {
         this.room = room;
@@ -50,9 +38,7 @@ public class Booking {
         this.typeOfWorkingVacation = typeOfWorkingVacation;
     }
 
-    public void addList(List<Booking> list){
-        bookingList.addAll(list);
-    }
+
 
 
     public int getPosition() {
@@ -115,21 +101,15 @@ public class Booking {
 
 
 
-    public BigDecimal getBookingLenght(){
-        BigDecimal daysBetween = BigDecimal.valueOf(ChronoUnit.DAYS.between(checkIn, checkOut));
+    public long getBookingLenght(){
+        long daysBetween = ChronoUnit.DAYS.between(checkIn, checkOut);
         return daysBetween;
     }
 
 
     public BigDecimal getprice(){
-        BigDecimal reservationPrice = BigDecimal.valueOf(0);
-        BigDecimal sumOfGet = BigDecimal.valueOf(0);
-
-        sumOfGet = sumOfGet.add(getBookingLenght());
-
-        reservationPrice = sumOfGet.multiply(room.getPrice());
-
-
+        BigDecimal reservationPrice;
+        reservationPrice = room.getPrice().multiply(BigDecimal.valueOf(getBookingLenght()));
         return reservationPrice;
     }
 

@@ -5,8 +5,47 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Main  {
 
+    static void vypisRezervací(Booking booking, Room room){
+        System.out.println(booking.getCheckIn() + " až " + booking.getCheckOut() + ": " + booking.getGuest() + "[" + booking.getNumberOfGuests() + room.isBalcony() + "] za " + booking.getprice());
+    }
+
+    //ukol 12
+     static void   rekreačníReservaceVýpis(Booking booking){
+
+       for (int i = 0; i < 7; i++){
+           if (!booking.getTypeOfWorkingVacation())
+               System.out.println(booking.getGuest() + "" + booking.getRoom());
+       }
+   }
+
+ // ukol 13
+  /* static  void printGuestStatistics(Booking bookingList) {
+       int ammountOfReservationWithOnne = 0;
+       int ammountOfReservationWithTwo = 0;
+       int ammountOfReservationWithThree = 0;
+
+       for (Booking booking : bookingList){
+
+           if (booking.getNumberOfGuests()== 1){
+               ammountOfReservationWithOnne = ammountOfReservationWithOnne +1;
+           }
+           else if (booking.getNumberOfGuests()== 2) {
+               ammountOfReservationWithTwo = ammountOfReservationWithTwo + 1;
+           }
+
+           else if (booking.getNumberOfGuests()== 3) {
+               ammountOfReservationWithThree = ammountOfReservationWithThree + 1;
+           }
+
+
+       }
+       System.out.println( "reservation with 1 guest:" + ammountOfReservationWithOnne);
+       System.out.println( "reservation with 2 guest:" + ammountOfReservationWithTwo);
+       System.out.println( "reservation with 3 guest:" + ammountOfReservationWithThree);
+   }
+*/
 
     public static void main(String[] args){
         //evidence hostů a list
@@ -42,15 +81,15 @@ public class Main {
 
         Booking reservation1 = new Booking(guest1,room1,LocalDate.of(2021,7,1),LocalDate.of(2021,7,19),1,true);
         Booking reservation2 = new Booking(guest2,room2,LocalDate.of(2021,9,1),LocalDate.of(2021,9,14),2,false);
-        Booking reservation3 = new Booking(guest3,room3,LocalDate.of(2023, 6, 1),LocalDate.of(2023, 6,7), 1, true);
-        Booking reseravtion4 = new Booking(guest4,room2,LocalDate.of(2023,7,18), LocalDate.of(2023, 7,21),1 ,false);
-        Booking reservation5 = new Booking(guest5,room3,LocalDate.of(2023,8,1),LocalDate.of(2023,8,31));
+        Booking reservation3 = new Booking(guest3,room3,LocalDate.of(2023, 6, 1),LocalDate.of(2023, 6,7), 3, true);
+        Booking reseravtion4 = new Booking(guest4,room2,LocalDate.of(2023,7,18), LocalDate.of(2023, 7,21),3 ,false);
+        Booking reservation5 = new Booking(guest5,room3,LocalDate.of(2023,8,1),LocalDate.of(2023,8,31),3,true);
 
 
         // loop pro hosty
         int reservationForOnePerson = 18;
         for (int i = 0; i <= reservationForOnePerson; i++) {
-            bookingList.add(new Booking(1+i, guest5, room2, LocalDate.of(2023,8,1+i),LocalDate.of(2023,8,2+i), 1,false ));
+            bookingList.add(new Booking(1+i, guest5, room2, LocalDate.of(2023,8,1+i),LocalDate.of(2023,8,2+i), 5,false ));
 
         }
 
@@ -64,72 +103,31 @@ public class Main {
 
 
 
-        //   jak to udělat abych zadal správně informace a nemusel je vypisovat nevim jak
-        // }
 
-        // výpis reservací
-        for (Booking booking : bookingList){
-            System.out.println(booking.getGuest() +"\n" + booking.getRoom() +"\n" + booking.getCheckIn() +" - " + booking.getCheckOut() + " " + booking.getTypeOfWorkingVacation());
-        }
 
-        //výpis rekreačních rezervací
-        for (Booking booking : bookingList){
-            if (booking.getTypeOfWorkingVacation() == false){
-                System.out.println("\ntyp pobytu je rekreační" + booking.getGuest() +"\n" + booking.getRoom() +"\n" + booking.getCheckIn() +" - " + booking.getCheckOut() );
-            }
 
-        }
 
-        //rozdělení rezervací
-        int ammountOfReservationWithOnne = 0;
-        int ammountOfReservationWithTwo = 0;
-        int ammountOfReservationWithThree = 0;
 
+
+
+
+        //    vypisRezervací();
+        //    rekreačníReservaceVýpis();
+        //    printGuestStatistics();
 
         for (Booking booking : bookingList){
+            System.out.println(booking.getGuest());
+            System.out.println("cena pobytu " + booking.getprice());
+            System.out.println("delka pobyu " + booking.getBookingLenght() + "\n");
 
-            if (booking.getNumberOfGuests()== 1){
-                ammountOfReservationWithOnne = ammountOfReservationWithOnne +1;
-            }
-            else if (booking.getNumberOfGuests()== 2) {
-                ammountOfReservationWithTwo = ammountOfReservationWithTwo + 1;
-            }
-
-            else if (booking.getNumberOfGuests()== 3) {
-                ammountOfReservationWithThree = ammountOfReservationWithThree + 1;
-            }
         }
 
-
-        //rekreační reservace
-        int reakreačníReservace = 0;
-        for (Booking booking : bookingList ) {
-            if (booking.getTypeOfWorkingVacation() == false){
-                reakreačníReservace = reakreačníReservace + 1;
-                if (reakreačníReservace <= 7){
-                    System.out.println(bookingList);
-                }
-            }
-        }
-
-
-
-        System.out.println( "reservation with 1 guest:" + ammountOfReservationWithOnne);
-        System.out.println( "reservation with 2 guest:" + ammountOfReservationWithTwo);
-        System.out.println( "reservation with 3 guest:" + ammountOfReservationWithThree);
 
 
         BookingManager bookingManager = new BookingManager();
         bookingManager.addList(bookingList);
 
-
-
-
-        for (Booking booking : bookingList){
-            System.out.println( booking.getGuest() + "" +  booking.getprice());
-
-        }
-        System.out.println("\n" + bookingManager.getNumberOfWorkingBooking());
+        System.out.println("\npruměrný počet hostu " + bookingManager.getAveregeGuest());
 
     }
 }
