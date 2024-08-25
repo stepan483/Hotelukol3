@@ -5,14 +5,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main  {
 
-    static void vypisRezervací(Booking booking, Room room){
+class  Methody{
+    private void VypisRezervací(Booking booking, Room room){
         System.out.println(booking.getCheckIn() + " až " + booking.getCheckOut() + ": " + booking.getGuest() + "[" + booking.getNumberOfGuests() + room.isBalcony() + "] za " + booking.getprice());
+
     }
 
+
+}
+
+public class Main  {
+
+
+
+
     //ukol 12
-     static void   rekreačníReservaceVýpis(Booking booking){
+  /*   private static Booking  RekreačníReservaceVýpis(Booking booking){
 
        for (int i = 0; i < 7; i++){
            if (!booking.getTypeOfWorkingVacation())
@@ -48,6 +57,7 @@ public class Main  {
 */
 
     public static void main(String[] args){
+
         //evidence hostů a list
 
         Guest guest1 = new Guest("adéla", "Malíková",LocalDate.of(1993, 3, 13));
@@ -103,17 +113,10 @@ public class Main  {
 
 
 
-
-
-
-
-
-
-
-
-        //    vypisRezervací(); //vyhazuje chybu.
+        //   vypisRezervací(); //vyhazuje chybu.
         //    rekreačníReservaceVýpis();
         //    printGuestStatistics();
+
 
         for (Booking booking : bookingList){
             System.out.println(booking.getGuest());
@@ -127,7 +130,14 @@ public class Main  {
         BookingManager bookingManager = new BookingManager();
         bookingManager.addList(bookingList);
 
+
+
         System.out.println("\npruměrný počet hostu " + bookingManager.getAveregeGuest());
 
     }
+    Methody methody= new Methody();
+
+
+
+
 }
