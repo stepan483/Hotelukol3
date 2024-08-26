@@ -6,18 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class  Methody{
-    private void VypisRezervací(Booking booking, Room room){
+public class Main  {
+
+    static void vypisRezervací (Booking booking, Room room){
         System.out.println(booking.getCheckIn() + " až " + booking.getCheckOut() + ": " + booking.getGuest() + "[" + booking.getNumberOfGuests() + room.isBalcony() + "] za " + booking.getprice());
 
     }
-
-
-}
-
-public class Main  {
-
-
 
 
     //ukol 12
@@ -134,10 +128,9 @@ public class Main  {
 
         System.out.println("\npruměrný počet hostu " + bookingManager.getAveregeGuest());
 
+
+        vypisRezervací();
+
     }
-    Methody methody= new Methody();
-
-
-
 
 }
